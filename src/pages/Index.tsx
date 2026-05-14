@@ -159,40 +159,54 @@ export default function Index() {
           </div>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8 animate-fade-up">
+        <nav className="hidden md:flex items-center gap-6 animate-fade-up">
           {["Услуги", "Диагностика", "О нас"].map((item) => (
             <button key={item}
               className="font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300">
               {item}
             </button>
           ))}
-          <a
-            href="https://yandex.ru/maps/?text=Автотехцентр+Люблино"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300"
-          >
+          <a href="https://yandex.ru/maps/?text=Автотехцентр+Люблино" target="_blank" rel="noopener noreferrer"
+            className="font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300">
             Контакты
+          </a>
+          <a href="tel:+79037297020"
+            className="flex items-center gap-1.5 font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300">
+            <Icon name="Phone" size={12} className="text-cyan" />
+            Позвонить
+          </a>
+          <a href="https://max.ru/+79037297020" target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-1.5 font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300">
+            <Icon name="MessageCircle" size={12} className="text-cyan" />
+            MAX
           </a>
         </nav>
 
-        {/* Кнопка контактов на мобильных — открывает Яндекс.Навигатор */}
-        <a
-          href="yandexnavi://build_route_on_map?lat_to=55.67638&lon_to=37.76340&utm_source=autoteh"
-          onClick={(e) => {
-            e.preventDefault();
-            window.location.href = "yandexnavi://show_poi_card?text=Автотехцентр+Люблино";
-            setTimeout(() => {
-              window.open("https://yandex.ru/maps/?text=Автотехцентр+Люблино", "_blank");
-            }, 1500);
-          }}
-          className="flex md:hidden items-center gap-1.5 animate-fade-up text-steel hover:text-cyan transition-colors duration-300"
-        >
-          <Icon name="MapPin" size={14} className="text-cyan" />
-          <span className="font-ibm text-[10px] tracking-[0.2em] uppercase">Контакты</span>
-        </a>
+        {/* Мобильные кнопки */}
+        <div className="flex md:hidden items-center gap-3 animate-fade-up">
+          <a href="tel:+79037297020"
+            className="flex items-center gap-1 text-steel hover:text-cyan transition-colors duration-300">
+            <Icon name="Phone" size={15} className="text-cyan" />
+          </a>
+          <a href="https://max.ru/+79037297020" target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-1 text-steel hover:text-cyan transition-colors duration-300">
+            <Icon name="MessageCircle" size={15} className="text-cyan" />
+          </a>
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = "yandexnavi://show_poi_card?text=Автотехцентр+Люблино";
+              setTimeout(() => {
+                window.open("https://yandex.ru/maps/?text=Автотехцентр+Люблино", "_blank");
+              }, 1500);
+            }}
+            href="yandexnavi://show_poi_card?text=Автотехцентр+Люблино"
+            className="flex items-center gap-1 text-steel hover:text-cyan transition-colors duration-300">
+            <Icon name="MapPin" size={15} className="text-cyan" />
+          </a>
+        </div>
 
-        <div className="flex items-center gap-2 animate-fade-up">
+        <div className="hidden md:flex items-center gap-2 animate-fade-up">
           <div className="w-2 h-2 rounded-full bg-cyan glow-cyan" />
           <span className="font-ibm text-[10px] tracking-[0.25em] uppercase text-steel">AI Online</span>
         </div>
