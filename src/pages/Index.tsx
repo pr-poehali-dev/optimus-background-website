@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
 const MARQUEE_TEXT =
@@ -8,14 +8,49 @@ const AI_GREETING = "Здравствуйте. Я — AI-система упра
 
 const IMG_ROBOT = "https://cdn.poehali.dev/projects/5dbf1b72-d5f2-481d-9dae-482b14f265ad/files/ff11a6cd-48d4-4a01-9c99-341012abc401.jpg";
 const IMG_TRUCK = "https://cdn.poehali.dev/projects/5dbf1b72-d5f2-481d-9dae-482b14f265ad/files/a7f05160-94ec-4f0a-bc40-110bf9b7e8ea.jpg";
+const AI_URL = "https://functions.poehali.dev/47e2ac7e-1eb3-4e41-bed2-87483e369c34";
 
 type TransformState = "robot" | "transforming" | "truck";
+
+interface ChatMessage {
+  role: "user" | "ai";
+  text: string;
+}
 
 export default function Index() {
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [transformState, setTransformState] = useState<TransformState>("robot");
   const [hint, setHint] = useState(true);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const [chatInput, setChatInput] = useState("");
+  const [chatLoading, setChatLoading] = useState(false);
+  const chatBottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chatMessages, chatLoading]);
+
+  const sendMessage = async () => {
+    const text = chatInput.trim();
+    if (!text || chatLoading) return;
+    setChatInput("");
+    setChatMessages(prev => [...prev, { role: "user", text }]);
+    setChatLoading(true);
+    try {
+      const res = await fetch(AI_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      });
+      const data = await res.json();
+      setChatMessages(prev => [...prev, { role: "ai", text: data.reply || "Ошибка ответа" }]);
+    } catch {
+      setChatMessages(prev => [...prev, { role: "ai", text: "Не удалось подключиться к AI. Попробуйте позже." }]);
+    }
+    setChatLoading(false);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -237,6 +272,7 @@ export default function Index() {
             </span>
           </button>
           <button
+            onClick={() => setChatOpen(true)}
             className="font-oswald font-light uppercase tracking-[0.2em] text-sm px-8 py-3 text-cyan border border-cyan/30 hover:border-cyan/70 transition-all duration-300"
             style={{ background: "rgba(0,212,255,0.04)", backdropFilter: "blur(8px)" }}>
             <span className="flex items-center gap-2">
@@ -367,6 +403,97 @@ export default function Index() {
           v2.0.1 ALPHA
         </div>
       </footer>
+
+      {/* AI ЧАТ ОКНО */}
+      {chatOpen && (
+        <div className="fixed inset-0 z-50 flex items-end justify-end p-4 md:p-8 pointer-events-none">
+          <div
+            className="pointer-events-auto w-full max-w-md flex flex-col border-glow animate-fade-up"
+            style={{
+              background: "rgba(4,9,16,0.96)",
+              backdropFilter: "blur(20px)",
+              maxHeight: "70vh",
+            }}
+          >
+            {/* Шапка чата */}
+            <div className="flex items-center gap-3 px-5 py-3"
+              style={{ borderBottom: "1px solid rgba(0,212,255,0.2)" }}>
+              <div className="w-7 h-7 border-glow flex items-center justify-center"
+                style={{ background: "rgba(0,212,255,0.1)" }}>
+                <Icon name="Bot" size={14} className="text-cyan" />
+              </div>
+              <div>
+                <div className="font-oswald text-xs tracking-[0.2em] uppercase text-white">AI Ассистент</div>
+                <div className="font-ibm text-[9px] text-steel/60 tracking-widest uppercase">только авто темы</div>
+              </div>
+              <div className="ml-auto flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan glow-cyan" />
+                <button onClick={() => setChatOpen(false)}
+                  className="text-steel/50 hover:text-cyan transition-colors ml-2">
+                  <Icon name="X" size={16} />
+                </button>
+              </div>
+            </div>
+
+            {/* Сообщения */}
+            <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 min-h-[200px]">
+              {chatMessages.length === 0 && (
+                <div className="text-center mt-4">
+                  <p className="font-ibm text-xs text-steel/50 leading-relaxed">
+                    Спросите про диагностику, ремонт,<br />замену масла, шиномонтаж или запись
+                  </p>
+                </div>
+              )}
+              {chatMessages.map((msg, i) => (
+                <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                  <div
+                    className="font-ibm text-sm leading-relaxed px-4 py-2.5 max-w-[85%]"
+                    style={msg.role === "user"
+                      ? { background: "rgba(0,212,255,0.15)", color: "#ffffff", border: "1px solid rgba(0,212,255,0.3)" }
+                      : { background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.85)", border: "1px solid rgba(255,255,255,0.08)" }
+                    }
+                  >
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+              {chatLoading && (
+                <div className="flex justify-start">
+                  <div className="px-4 py-3 flex items-center gap-1.5"
+                    style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                    {[0,1,2].map(i => (
+                      <div key={i} className="w-1.5 h-1.5 rounded-full bg-cyan/60 animate-pulse"
+                        style={{ animationDelay: `${i * 0.2}s` }} />
+                    ))}
+                  </div>
+                </div>
+              )}
+              <div ref={chatBottomRef} />
+            </div>
+
+            {/* Поле ввода */}
+            <div className="px-4 py-3 flex gap-2"
+              style={{ borderTop: "1px solid rgba(0,212,255,0.15)" }}>
+              <input
+                type="text"
+                value={chatInput}
+                onChange={e => setChatInput(e.target.value)}
+                onKeyDown={e => e.key === "Enter" && sendMessage()}
+                placeholder="Спросите про авто..."
+                className="flex-1 bg-transparent font-ibm text-sm text-white placeholder-steel/40 outline-none px-3 py-2 border border-cyan/20 focus:border-cyan/50 transition-colors"
+              />
+              <button
+                onClick={sendMessage}
+                disabled={chatLoading || !chatInput.trim()}
+                className="px-4 py-2 font-oswald text-xs uppercase tracking-widest text-[#060a0f] disabled:opacity-40 transition-opacity"
+                style={{ background: "#00d4ff" }}
+              >
+                <Icon name="Send" size={14} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

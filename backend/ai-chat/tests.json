@@ -1,0 +1,13 @@
+{
+  "tests": [
+    {
+      "name": "Вопрос про замену масла",
+      "method": "POST",
+      "path": "/",
+      "body": {"message": "Сколько стоит замена масла?"},
+      "expectedStatus": 200,
+      "expectedBody": {"reply": "string"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
