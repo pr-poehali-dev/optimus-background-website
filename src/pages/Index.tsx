@@ -160,12 +160,20 @@ export default function Index() {
         </div>
 
         <nav className="hidden md:flex items-center gap-8 animate-fade-up">
-          {["Услуги", "Диагностика", "О нас", "Контакты"].map((item) => (
+          {["Услуги", "Диагностика", "О нас"].map((item) => (
             <button key={item}
               className="font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300">
               {item}
             </button>
           ))}
+          <a
+            href="https://yandex.ru/maps/?rtext=~55.676506,37.763000&rtt=auto"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300"
+          >
+            Контакты
+          </a>
         </nav>
 
         <div className="flex items-center gap-2 animate-fade-up">
