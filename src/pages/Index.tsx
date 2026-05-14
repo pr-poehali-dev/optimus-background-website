@@ -167,7 +167,7 @@ export default function Index() {
             </button>
           ))}
           <a
-            href="https://yandex.ru/maps/?rtext=~55.676506,37.763000&rtt=auto"
+            href="https://yandex.ru/maps/213/moscow/?rtext=~55.676506,37.763400&rtt=auto&z=17"
             target="_blank"
             rel="noopener noreferrer"
             className="font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300"
@@ -175,6 +175,17 @@ export default function Index() {
             Контакты
           </a>
         </nav>
+
+        {/* Кнопка контактов на мобильных */}
+        <a
+          href="https://yandex.ru/maps/213/moscow/?rtext=~55.676506,37.763400&rtt=auto&z=17"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex md:hidden items-center gap-1.5 animate-fade-up text-steel hover:text-cyan transition-colors duration-300"
+        >
+          <Icon name="MapPin" size={14} className="text-cyan" />
+          <span className="font-ibm text-[10px] tracking-[0.2em] uppercase">Контакты</span>
+        </a>
 
         <div className="flex items-center gap-2 animate-fade-up">
           <div className="w-2 h-2 rounded-full bg-cyan glow-cyan" />
@@ -403,7 +414,7 @@ export default function Index() {
             <span className="font-ibm text-[10px] text-steel/50">8 (903) 729-70-20</span>
           </a>
           <a
-            href="https://yandex.ru/maps/?rtext=~55.676506,37.763000&rtt=auto"
+            href="https://yandex.ru/maps/213/moscow/?rtext=~55.676506,37.763400&rtt=auto&z=17"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
