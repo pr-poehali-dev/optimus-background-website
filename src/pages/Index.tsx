@@ -166,7 +166,7 @@ export default function Index() {
               {item}
             </button>
           ))}
-          <a href="https://yandex.ru/maps/?text=Автотехцентр+Люблино" target="_blank" rel="noopener noreferrer"
+          <a href="https://yandex.ru/maps/org/avtotekhtsentr/62160438772/?ll=37.738243%2C55.673692&z=17.59" target="_blank" rel="noopener noreferrer"
             className="font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300">
             Контакты
           </a>
@@ -195,12 +195,12 @@ export default function Index() {
           <a
             onClick={(e) => {
               e.preventDefault();
-              window.location.href = "yandexnavi://show_poi_card?text=Автотехцентр+Люблино";
+              window.location.href = "yandexnavi://show_poi_card?uri=ymapsbm1%3A%2F%2Forg%3Foid%3D62160438772";
               setTimeout(() => {
-                window.open("https://yandex.ru/maps/?text=Автотехцентр+Люблино", "_blank");
+                window.open("https://yandex.ru/maps/org/avtotekhtsentr/62160438772/?ll=37.738243%2C55.673692&z=17.59", "_blank");
               }, 1500);
             }}
-            href="yandexnavi://show_poi_card?text=Автотехцентр+Люблино"
+            href="https://yandex.ru/maps/org/avtotekhtsentr/62160438772/?ll=37.738243%2C55.673692&z=17.59"
             className="flex items-center gap-1 text-steel hover:text-cyan transition-colors duration-300">
             <Icon name="MapPin" size={15} className="text-cyan" />
           </a>
@@ -433,7 +433,7 @@ export default function Index() {
             <span className="font-ibm text-[10px] text-steel/50">8 (903) 729-70-20</span>
           </a>
           <a
-            href="https://yandex.ru/maps/?text=Автотехцентр+Люблино"
+            href="https://yandex.ru/maps/org/avtotekhtsentr/62160438772/?ll=37.738243%2C55.673692&z=17.59"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
