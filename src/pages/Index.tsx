@@ -167,7 +167,7 @@ export default function Index() {
             </button>
           ))}
           <a
-            href="https://yandex.ru/maps/?text=Москва%2C+Люблинская+улица%2C+60&rtt=auto"
+            href="https://yandex.ru/maps/?text=Автотехцентр+Люблино"
             target="_blank"
             rel="noopener noreferrer"
             className="font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300"
@@ -181,9 +181,9 @@ export default function Index() {
           href="yandexnavi://build_route_on_map?lat_to=55.67638&lon_to=37.76340&utm_source=autoteh"
           onClick={(e) => {
             e.preventDefault();
-            window.location.href = "yandexnavi://build_route_on_map?lat_to=55.67638&lon_to=37.76340";
+            window.location.href = "yandexnavi://show_poi_card?text=Автотехцентр+Люблино";
             setTimeout(() => {
-              window.open("https://yandex.ru/maps/?text=Москва%2C+Люблинская+улица%2C+60&rtt=auto", "_blank");
+              window.open("https://yandex.ru/maps/?text=Автотехцентр+Люблино", "_blank");
             }, 1500);
           }}
           className="flex md:hidden items-center gap-1.5 animate-fade-up text-steel hover:text-cyan transition-colors duration-300"
@@ -419,7 +419,7 @@ export default function Index() {
             <span className="font-ibm text-[10px] text-steel/50">8 (903) 729-70-20</span>
           </a>
           <a
-            href="https://yandex.ru/maps/?text=Москва%2C+Люблинская+улица%2C+60&rtt=auto"
+            href="https://yandex.ru/maps/?text=Автотехцентр+Люблино"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
