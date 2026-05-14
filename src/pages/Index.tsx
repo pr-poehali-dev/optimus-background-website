@@ -300,7 +300,7 @@ export default function Index() {
 
         {/* Финал — машина готова */}
         {isTruck && (
-          <div className="flex flex-col items-center gap-2 animate-fade-up">
+          <div className="flex flex-col items-center gap-3 animate-fade-up">
             <div className="flex items-center gap-2 px-5 py-2.5 border-glow"
               style={{ background: "rgba(0,212,255,0.06)" }}>
               <Icon name="CheckCircle" size={14} className="text-cyan" />
@@ -308,6 +308,20 @@ export default function Index() {
                 Трансформация завершена
               </span>
             </div>
+            <button
+              onClick={() => { setTransformState("transforming"); setTimeout(() => setTransformState("robot"), 2200); setHint(false); }}
+              className="group font-oswald font-light uppercase tracking-[0.25em] text-[11px] px-5 py-2 border transition-all duration-300"
+              style={{
+                borderColor: "rgba(143,163,177,0.3)",
+                background: "rgba(143,163,177,0.04)",
+                color: "rgba(143,163,177,0.7)",
+              }}
+            >
+              <span className="flex items-center gap-2 group-hover:text-cyan transition-colors duration-300">
+                <Icon name="RotateCcw" size={11} />
+                Вернуть робота
+              </span>
+            </button>
           </div>
         )}
       </main>
