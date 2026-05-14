@@ -176,11 +176,16 @@ export default function Index() {
           </a>
         </nav>
 
-        {/* Кнопка контактов на мобильных */}
+        {/* Кнопка контактов на мобильных — открывает Яндекс.Навигатор */}
         <a
-          href="https://yandex.ru/maps/?text=Москва%2C+Люблинская+улица%2C+60&rtt=auto"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="yandexnavi://build_route_on_map?lat_to=55.67638&lon_to=37.76340&utm_source=autoteh"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "yandexnavi://build_route_on_map?lat_to=55.67638&lon_to=37.76340";
+            setTimeout(() => {
+              window.open("https://yandex.ru/maps/?text=Москва%2C+Люблинская+улица%2C+60&rtt=auto", "_blank");
+            }, 1500);
+          }}
           className="flex md:hidden items-center gap-1.5 animate-fade-up text-steel hover:text-cyan transition-colors duration-300"
         >
           <Icon name="MapPin" size={14} className="text-cyan" />
