@@ -175,7 +175,7 @@ export default function Index() {
             <Icon name="Phone" size={12} className="text-cyan" />
             Позвонить
           </a>
-          <a href="https://vk.me/+79037297020" target="_blank" rel="noopener noreferrer"
+          <a href="https://max.ru/im?sel=+79037297020" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-1.5 font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300">
             <Icon name="MessageCircle" size={12} className="text-cyan" />
             MAX
@@ -188,7 +188,7 @@ export default function Index() {
             className="flex items-center gap-1 text-steel hover:text-cyan transition-colors duration-300">
             <Icon name="Phone" size={15} className="text-cyan" />
           </a>
-          <a href="https://vk.me/+79037297020" target="_blank" rel="noopener noreferrer"
+          <a href="https://max.ru/im?sel=+79037297020" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-1 text-steel hover:text-cyan transition-colors duration-300">
             <Icon name="MessageCircle" size={15} className="text-cyan" />
           </a>
