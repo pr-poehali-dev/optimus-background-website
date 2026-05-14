@@ -392,11 +392,11 @@ export default function Index() {
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-1.5">
             <Icon name="Phone" size={11} className="text-cyan/40" />
-            <span className="font-ibm text-[10px] text-steel/50">+7 (900) 000-00-00</span>
+            <span className="font-ibm text-[10px] text-steel/50">8 (903) 729-70-20</span>
           </div>
           <div className="flex items-center gap-1.5">
             <Icon name="MapPin" size={11} className="text-cyan/40" />
-            <span className="font-ibm text-[10px] text-steel/50">Люблино, Москва</span>
+            <span className="font-ibm text-[10px] text-steel/50">Люблинская ул., дом 60</span>
           </div>
         </div>
         <div className="font-ibm text-[10px] tracking-[0.15em] text-steel/30 uppercase">
