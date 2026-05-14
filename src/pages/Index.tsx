@@ -167,7 +167,7 @@ export default function Index() {
             </button>
           ))}
           <a
-            href="https://yandex.ru/maps/213/moscow/?rtext=~55.676506,37.763400&rtt=auto&z=17"
+            href="https://yandex.ru/maps/?text=Москва%2C+Люблинская+улица%2C+60&rtt=auto"
             target="_blank"
             rel="noopener noreferrer"
             className="font-ibm text-xs tracking-[0.2em] uppercase text-steel hover:text-cyan transition-colors duration-300"
@@ -178,7 +178,7 @@ export default function Index() {
 
         {/* Кнопка контактов на мобильных */}
         <a
-          href="https://yandex.ru/maps/213/moscow/?rtext=~55.676506,37.763400&rtt=auto&z=17"
+          href="https://yandex.ru/maps/?text=Москва%2C+Люблинская+улица%2C+60&rtt=auto"
           target="_blank"
           rel="noopener noreferrer"
           className="flex md:hidden items-center gap-1.5 animate-fade-up text-steel hover:text-cyan transition-colors duration-300"
@@ -414,7 +414,7 @@ export default function Index() {
             <span className="font-ibm text-[10px] text-steel/50">8 (903) 729-70-20</span>
           </a>
           <a
-            href="https://yandex.ru/maps/213/moscow/?rtext=~55.676506,37.763400&rtt=auto&z=17"
+            href="https://yandex.ru/maps/?text=Москва%2C+Люблинская+улица%2C+60&rtt=auto"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
